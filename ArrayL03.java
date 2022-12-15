@@ -50,12 +50,55 @@ static int uniquNum(int arr[]){
     }
     int ans = -1;
     for(int i = 0; i<n;i++){
-        if(arr[i]>0){
+        if(arr[i]>0){ 
             ans = arr[i];
         }
     }
     return ans;
 }
+
+
+
+static int findMax(int[]arr){
+     int max = Integer.MIN_VALUE;
+     int n = arr.length;
+
+     for (int i = 0; i<n; i++) {
+        if(arr[i]>max){
+            max = arr[i];
+        }
+     }
+     return max;
+}
+
+
+static int secondLargest(int arr[]){
+    int n = arr.length;
+    int max = findMax(arr);
+       for(int i = 0;i<n;i++){
+        if(arr[i]==max){
+            arr[i] = Integer.MIN_VALUE;
+        }
+       }
+       int secondMax = findMax(arr);
+       return secondMax;
+        }
+    
+
+
+        // Qus- return the  First Reapeating Number in given array if no repeating number exist then return -1; ex- 1 2 3 2 3 ans 2 ex- 1 2 3 4 5 ans = -1;
+        static int firstRepeatingNumber(int[]arr){
+            int n = arr.length;
+            int ans = -1;
+            for(int i = 0; i<n; i++){ // first number
+                for(int j = i+1;j<n;j++){ // second number
+                    if(arr[i]==arr[j]){
+                      return arr[i];
+                    }
+                }
+            }
+            return -1;
+        }
 
 
     public static void main(String []args){
@@ -79,7 +122,14 @@ static int uniquNum(int arr[]){
 
 
     
-    System.out.println("The Unique Element Is: "+uniquNum(arr));
+    // System.out.println("The Unique Element Is: "+uniquNum(arr));
+
+
+
+    // System.out.println("The Second Largets Value Is: "+secondLargest(arr));
+
+
+    System.out.println("First Repeating Number Is: "+firstRepeatingNumber(arr));
 
     } 
 }
